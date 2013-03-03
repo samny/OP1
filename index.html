@@ -7,6 +7,59 @@
 		<meta charset="UTF-8">
 
 		<style type="text/css">
+			@-webkit-keyframes fadeIn {
+			  0% {
+			  	opacity: 0;
+			  	-webkit-transform: translateZ(-100px);
+			    -moz-transform: translatz(-100px);
+			    -ms-transform: translatez(-100px);
+			    -o-transform: translatez(-100px);
+			    transform: translatez(-100px);
+			  }
+			  100% {
+			  	opacity: 1;
+			  	-webkit-transform: translateZ(0px);
+			    -moz-transform: translatez(0);
+			    -ms-transform: translatez(0);
+			    -o-transform: translatez(0);
+			    transform: translatez(0);
+			  }
+			}
+			@-webkit-keyframes fadeIn2 {
+			  0%, 50% {
+			  	opacity: 0;
+			  	-webkit-transform: translateZ(-100px);
+			    -moz-transform: translatz(-100px);
+			    -ms-transform: translatez(-100px);
+			    -o-transform: translatez(-100px);
+			    transform: translatez(-100px);
+			  }
+			  100% {
+			  	opacity: 1;
+			  	-webkit-transform: translateZ(0px);
+			    -moz-transform: translatez(0);
+			    -ms-transform: translatez(0);
+			    -o-transform: translatez(0);
+			    transform: translatez(0);
+			  }
+			}
+
+			.fade-in-1{
+				-webkit-animation: fadeIn 1s ease-in-out; /* Safari 4+ */
+  				-moz-animation:    fadeIn 1s ease-in-out; /* Fx 5+ */
+  				-o-animation:      fadeIn 1s ease-in-out; /* Opera 12+ */
+  				animation:         fadeIn 1s ease-in-out;
+			}
+
+			.fade-in-2{
+				-webkit-animation: fadeIn2 1.5s ease-in-out; /* Safari 4+ */
+  				-moz-animation:    fadeIn2 1.5s ease-in-out; /* Fx 5+ */
+  				-o-animation:      fadeIn2 1.5s ease-in-out; /* Opera 12+ */
+  				animation:         fadeIn2 1.5s ease-in-out;
+			}
+
+
+
 			html{
 				height:100%;
 				margin:0;
@@ -63,6 +116,7 @@
 			}
 
 			.container{
+				-webkit-perspective: 1000;
 				margin-top:50px;
 				position: relative;
 			}
@@ -71,18 +125,6 @@
 				width:808px;
 				margin:0 auto;
 				padding:50px 10px;
-				-webkit-transition: all 1s .5s ease-out;
-				-moz-transition: all 1s .5s ease-out;
-				-webkit-transform:scale(1);
-				-moz-transform:scale(1);
-			}
-
-			.content.hidden{
-				opacity:0;
-				-webkit-transition: none;
-				-moz-transition: none;
-				-webkit-transform:scale(0.95);
-				-moz-transform:scale(0.95);
 			}
 
 			.extra{
@@ -491,7 +533,7 @@
 	</head>
 	<body>
 		<div class="container">
-		<section class="content hidden">
+		<section class="content fade-in-1">
 			<div class="op-frame">
 				<div class="op-frame-detail-logo">
 					<span>CSS-3</span>
@@ -613,7 +655,7 @@
 			</div>
 		</div>
 		</section>
-		<section class="extra">
+		<section class="extra fade-in-2">
 			<a class="op-btn-big" href=""><i class="icon">
 				<span></span><span></span><span></span><span></span>
 			</i></a>
@@ -685,7 +727,6 @@
 				});
 
 				$.knob('.op-knob-small, .op-knob');
-				$('.content').removeClass('hidden');
 			});
 
 		</script>
