@@ -1,0 +1,706 @@
+<html>
+	<head>
+		<title>CSS3 OP1</title>
+		<meta name="description" content="A CSS3 experiment. No images.">
+		<meta name="keywords" content="HTML,CSS,JavaScript,OP1,synthesizer">
+		<meta name="author" content="Samuel Nystedt">
+		<meta charset="UTF-8">
+
+		<style type="text/css">
+			html{
+				height:100%;
+				margin:0;
+				padding:0;
+			}
+
+			body{
+				margin:0;
+				padding:0;
+				position:relative;
+				-webkit-font-smoothing:antialiased;
+				-moz-font-smoothing:antialiased;
+				background-color:hsla(0,10%,0%, 1);
+				background-size: 100%;
+				background-repeat: no-repeat;
+				background-image:
+				-webkit-radial-gradient(50% 40%, circle farthest-corner, hsla(0,10%,20%, 1) 0%, hsla(0,10%,0%, 1) 100%);
+				-moz-radial-gradient(50% 40%, circle farthest-corner, hsla(0,10%,20%, 1) 0%, hsla(0,10%,0%, 1) 100%);
+				font-family:sans-serif;
+				color:#888;
+			}
+
+			footer{
+				padding:50px 0 20px 0;
+				display:block;
+				width:100%;
+				text-align: center;
+				font-size:12px;
+				color:#666;
+				width:500;
+				margin: 0 auto;
+				line-height: 1.5;
+			}
+
+			footer span{
+				max-width:200px;
+			}
+
+			a{
+				text-decoration: none;
+				color:#999;
+			}
+			a:hover{
+				color:#ddd;
+			}
+
+			img{
+				margin:3px;
+			}
+			img.small{
+				width:42px;
+				height:42px;
+				margin:1px;
+			}
+
+			.container{
+				margin-top:50px;
+				position: relative;
+			}
+
+			.content{
+				width:808px;
+				margin:0 auto;
+				padding:50px 10px;
+				-webkit-transition: all 1s .5s ease-out;
+				-moz-transition: all 1s .5s ease-out;
+				-webkit-transform:scale(1);
+				-moz-transform:scale(1);
+			}
+
+			.content.hidden{
+				opacity:0;
+				-webkit-transition: none;
+				-moz-transition: none;
+				-webkit-transform:scale(0.95);
+				-moz-transform:scale(0.95);
+			}
+
+			.extra{
+				display:block;
+				width:142px;
+				height:142px;
+				padding:50px 10px 100px 10px;
+				margin: auto;
+			}
+
+			.images{
+				display:none;
+			}
+
+
+
+			/*******************************
+			 * OP1
+			 *******************************/
+
+			.op-frame{
+				position:relative;
+				width:780px;
+				height:266px;
+				padding:12px 14px 12px 14px;
+				border-radius:12px;
+				background-color:rgba(212, 215, 227, 1);
+				background-image:-webkit-linear-gradient(bottom, rgba(206, 209, 221, 1) 0%, rgba(206, 209, 221, 0) 100%);
+				background-image:-moz-linear-gradient(bottom, rgba(206, 209, 221, 1) 0%, rgba(206, 209, 221, 0) 100%);
+				box-shadow:
+					inset 1px 1px 1px 0px rgba(255, 255, 255, 0.5),
+					inset -1px -1px 1px rgba(0,0,0, 0.2);
+			}
+
+			.op-frame-detail-logo{
+				position:absolute;
+				bottom:48px;
+				right:-2px;
+				-webkit-transform-origin: center center;
+				-moz-transform-origin: center center;
+				-webkit-transform: rotate(-90deg);
+				-moz-transform: rotate(-90deg);
+				-webkit-backface-visibility: hidden;
+				-moz-backface-visibility: hidden;
+			}
+			.op-frame-detail-logo > span{
+
+			}
+
+			.op-frame-detail1{
+				position:absolute;
+				top:27px;
+				right:14px;
+				width:16px;
+				height:16px;
+				background-size:8px 8px;
+				background-position:left top;
+				background-repeat:repeat;
+				background-image:-webkit-radial-gradient(4px 4px, 6px 6px, rgba(0,0,0, 1) 0%, rgba(0,0,0, 1) 1%,rgba(0,0,0, 0) 40%);
+				background-image:-moz-radial-gradient(4px 4px, circle closest-corner, rgba(0,0,0, 1) 0%, rgba(0,0,0, 1) 1%,rgba(0,0,0, 0) 40%);
+			}
+			.op-frame-detail2{
+				position:absolute;
+				top:100px;
+				right:13px;
+				width:20px;
+				height:50px;
+				background-size:8px 8px;
+				background-position:center top;
+				background-repeat:repeat-y;
+				background-image:-webkit-radial-gradient(4px 4px, 6px 6px, rgba(0,0,0, 1) 0%, rgba(0,0,0, 1) 1%,rgba(0,0,0, 0) 30%);
+				background-image:-moz-radial-gradient(4px 4px, circle closest-corner, rgba(0,0,0, 1) 0%, rgba(0,0,0, 1) 1%,rgba(0,0,0, 0) 30%);
+			}
+
+
+			.op-keyboard{
+				padding:1px;
+				width:748px;
+				display:block;
+				background:#222;
+				border-radius:3px;
+				overflow:hidden;
+			}
+
+			.op-group-1{
+				float:left;
+				width:44px;
+			}
+			.op-group-2{
+				float:left;
+				width:88px;
+			}
+			.op-group-3{
+				float:left;
+				width:132px;
+			}
+
+			.op-comp{
+				float:left;
+				position:relative;
+				margin:1px;
+				display:block;
+				border-radius:2px;
+				background-color:rgba(212, 215, 227, 1);
+				background-image:-webkit-linear-gradient(bottom, rgba(206, 209, 221, 1) 0%, rgba(206, 209, 221, 0) 100%);
+				background-image:-moz-linear-gradient(bottom, rgba(206, 209, 221, 1) 0%, rgba(206, 209, 221, 0) 100%);
+				box-shadow:
+				inset 1px 1px 1px 0px rgba(255, 255, 255, 0.5),
+				inset -1px -1px 1px rgba(0,0,0, 0.2);
+				width:42px;
+				height:42px;
+			}
+
+			.op-comp-1x2{
+				width:42px;
+				height:86px;
+			}
+
+			.op-comp-2x2{
+				width:86px;
+				height:86px;
+			}
+			.op-comp-2x1{
+				width:86px;
+				height:42px;
+			}
+			.op-comp-4x2{
+				width:174px;
+				height:86px;
+			}
+
+			.op-comp-display{
+				background:
+				-webkit-linear-gradient(-30deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 35%,rgba(0, 0, 0, 1) 38%),
+				-webkit-linear-gradient(80deg, rgba(28, 28, 38, 1) 20%, rgba(102, 110, 110, 1) 100%);
+				background:-moz-linear-gradient(-30deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 35%,rgba(0, 0, 0, 1) 38%),
+				-moz-linear-gradient(80deg, rgba(28, 28, 38, 1) 20%, rgba(102, 110, 110, 1) 100%);
+			}
+
+			.op-comp-btn{
+
+			}
+			.op-comp-btn:active{
+				box-shadow:
+				inset 0px -1px 10px rgba(0,0,0, 0.1),
+				inset 1px 1px 1px 0px rgba(255, 255, 255, 0.5),
+				inset -1px -1px 1px rgba(0,0,0, 0.2);
+				-webkit-transform:scale(0.99);
+				-webkit-transform-origin:center center;
+				-webkit-backface-visibility:hidden;
+				-moz-transform:scale(0.99);
+				-moz-transform-origin:center center;
+				-moz-backface-visibility:hidden;
+			}
+			.op-comp-btn:before{
+				-webkit-box-sizing:border-box;
+				-moz-box-sizing:border-box;
+				content:"";
+				position:absolute;
+				display:block;
+				border-radius:13px;
+				top:8px;
+				left:8px;
+				width:26px;
+				height:26px;
+				box-shadow:
+				1px 1px 5px rgba(129,133,152,0.5),
+				-5px -5px 3px -5px rgba(255,255,255,0.5),
+				6px 6px 8px -4px rgba(87,89,102,0.6),
+				0px 0px 2px 5px rgba(227, 229, 239,0.35),
+				inset 1px 1px 3px -1px rgba(255, 255, 255, 0.8);
+				-webkit-filter: blur(0.75px);
+    			-moz-filter: blur(0.75px);
+    			filter: blur(0.75px);
+			}
+
+			.btn-1x2{
+				width:42px;
+				height:86px;
+			}
+			.btn-1x2:before{
+				height:70px;
+			}
+			.btn-wide-left,
+			.btn-wide-right{
+				width:64px;
+			}
+
+			.btn-wide-left:before{
+				left:8px;
+				right:auto;
+			}
+			.btn-wide-right:before{
+				right:8px;
+				left:auto;
+			}
+
+			.btn-black:before{
+				background-image:-webkit-radial-gradient(50% 50%, circle farthest-corner, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 65%,rgba(0, 0, 0, 0) 100%);
+				background-image:-moz-radial-gradient(50% 50%, circle farthest-corner, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 65%,rgba(0, 0, 0, 0) 100%);
+			}
+
+			.op-knob-small{
+				cursor:ew-resize;
+				-webkit-box-sizing:border-box;
+				-moz-box-sizing:border-box;
+				content:"";
+				position:absolute;
+				display:block;
+				border-radius:13px;
+				top:8px;
+				left:8px;
+				width:26px;
+				height:26px;
+				background-color:rgba(240,240,240,1);
+				box-shadow:
+				1px 1px 5px rgba(129,133,152,0.5),
+				6px 6px 8px -1px rgba(87,89,102,0.6),
+				inset 1px 1px 1px 0px rgba(255, 255, 255, 0.5),
+				inset -1px -1px 1px 0px rgba(0, 0, 0, 0.1);
+			}
+			.op-knob-small .knob-handle{
+				content:"";
+				position:absolute;
+				top:0;
+				left:0;
+				bottom:0;
+				right:0;
+				background-color:transparent;
+				background-image:-webkit-radial-gradient(50% 25%, 4px 4px, rgba(100,100,100, 0.05) 0%, rgba(100,100,100, 0.15) 50%,rgba(100,100,100, 0) 70%);
+				-webkit-transform:rotate(0deg);
+				-webkit-backface-visibility:hidden;
+
+				background-image:-moz-radial-gradient(50% 25%, circle closest-side, rgba(100,100,100, 0.05) 0%, rgba(100,100,100, 0.15) 50%,rgba(100,100,100, 0) 70%);
+				-moz-transform:rotate(0deg);
+				-moz-backface-visibility:hidden;
+			}
+			.op-knob-small .knob-input{
+				display:none;
+			}
+
+			.op-knob{
+				cursor:ew-resize;
+				position:relative;
+				top:16px;
+				left:16px;
+				-webkit-box-sizing:border-box;
+				-moz-box-sizing:border-box;
+				width:54px;
+				height:54px;
+				border-radius:50%;
+				border:2px solid #333;
+				background-image:-webkit-radial-gradient(50% 50%, circle farthest-corner, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 55%,rgba(255, 255, 255, 0) 60%);
+				background-image:-moz-radial-gradient(50% 50%, circle farthest-corner, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 55%,rgba(255, 255, 255, 0) 60%);
+			}
+			.op-knob:before{
+				content:"";
+				position:absolute;
+				width:26px;
+				height:26px;
+				border-radius:50%;
+				background-color:rgba(91, 183, 242, 1);
+				top:12px;
+				left:12px;
+				box-shadow:
+				1px 1px 5px rgba(129,133,152,0.5),
+				-6px -6px 4px -4px rgba(255,255,255,0.7),
+				6px 6px 8px -1px rgba(87,89,102,0.6),
+				0px 0px 2px 10px rgba(227, 229, 239,0.5),
+				inset 1px 1px 3px -1px rgba(255, 255, 255, 0.8),
+				inset -1px -1px 3px -1px rgba(0, 0, 0, 0.5);
+			}
+			.op-knob.blue:before{
+				background-color:rgba(91, 183, 242, 1);
+			}
+			.op-knob.green:before{
+				background-color:rgba(96, 205, 115, 1);
+			}
+			.op-knob.white:before{
+				background-color:rgba(251,249,252, 1);
+			}
+			.op-knob.orange:before{
+				background-color:rgba(238,102,38, 1);
+			}
+			.op-knob .knob-handle{
+				content:"";
+				position:absolute;
+				display:block;
+				width:6px;
+				height:18px;
+				border-radius:3px;
+				background-color:rgba(0, 0, 0, 0.05);
+				margin: -9px -3px;
+				top:50%;
+				left:50%;
+				box-shadow:inset 1px 1px 2px -1px rgba(0,0,0,0.3), inset -1px -1px 2px -1px rgba(255,255,255,0.8);
+				-webkit-transform:rotate(0deg);
+				-webkit-backface-visibility:hidden;
+				-moz-transform:rotate(0deg);
+				-moz-backface-visibility:hidden;
+			}
+
+			.op-knob input{
+				display:none;
+			}
+
+			.op-speaker{
+				margin:4px 0;
+			}
+			.op-speaker > div{
+				display:block;
+				margin:0 auto;
+				background-size:6px 6px;
+				background-position:left top;
+				background-repeat:repeat;
+				background-image:-webkit-radial-gradient(3px 3px, 6px 6px, rgba(0,0,0, 1) 0%, rgba(0,0,0, 1) 1%,rgba(0,0,0, 0) 40%);
+				background-image:-moz-radial-gradient(3px 3px, circle closest-corner, rgba(0,0,0, 1) 0%, rgba(0,0,0, 1) 1%,rgba(0,0,0, 0) 40%);
+			}
+			.op-speaker >.speaker-row-7{
+				width:42px;
+				height:6px;
+			}
+			.op-speaker >.speaker-row-11{
+				width:66px;
+				height:12px;
+			}
+			.op-speaker >.speaker-row-13{
+				width:78px;
+				height:42px;
+			}
+
+
+			/*******************************
+			 * OP1 Big Button
+			 *******************************/
+
+			.op-btn-big{
+				position:relative;
+				margin:3px;
+				display:block;
+				float:left;
+				border-radius:8px;
+				width:142px;
+				height:142px;
+				background:-webkit-radial-gradient(50% 65%, 55px 60px, rgba(0, 0, 0, 0.8) 0%,rgba(0, 0, 0, 0.4) 50%,rgba(0, 0, 0, 0) 98%), -webkit-radial-gradient(50% 50%, circle, rgba(201, 205, 212, 1) 55%,rgba(201, 205, 212, 0) 65%),-webkit-linear-gradient(bottom, rgba(162, 166, 177, 1) 0%, rgba(180, 182, 193, 1) 100%);
+				background:-moz-radial-gradient(50% 65%, 55px 60px, rgba(0, 0, 0, 0.8) 0%,rgba(0, 0, 0, 0.4) 50%,rgba(0, 0, 0, 0) 98%), -moz-radial-gradient(50% 50%, circle, rgba(201, 205, 212, 1) 55%,rgba(201, 205, 212, 0) 65%),-moz-linear-gradient(bottom, rgba(162, 166, 177, 1) 0%, rgba(180, 182, 193, 1) 100%);
+				box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), inset 0 -1px 1px rgba(0,0,0, 0.1);
+
+			}
+			.op-btn-big:after{
+				-webkit-box-sizing:border-box;
+				-moz-box-sizing:border-box;
+				content:"";
+				position:absolute;
+				display:block;
+				border-radius:50%;
+				top:23;
+				left:23px;
+				width:96;
+				height:96px;
+				background-color:rgba(180, 182, 193, 1);
+				-webkit-filter: blur(1.2px);
+    			-moz-filter: blur(1.2px);
+    			filter: blur(1.2px);
+			}
+
+			/*******************************
+			 * OP1 big button icon
+			 *******************************/
+
+			.icon{
+				position:relative;
+				top:85px;
+				left:50%;
+				z-index:1;
+			}
+			.icon span{
+				display:block;
+				position:absolute;
+				width:3px;
+				height:15px;
+				background:rgba(99, 102, 126, 1)
+			}
+			.icon span:nth-child(1){
+				bottom:0;
+				left:-10px;
+				height:20px;
+			}
+			.icon span:nth-child(2){
+				bottom:0px;
+				left:-3px;
+				height:28px;
+			}
+
+			.icon span:nth-child(3){
+				bottom:0;
+				left:3px;
+				height:10px;
+			}
+			.icon span:nth-child(4){
+				bottom:0;
+				left:10px;
+				height:16px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+		<section class="content hidden">
+			<div class="op-frame">
+				<div class="op-frame-detail-logo">
+					<span>CSS-3</span>
+				</div>
+
+				<div class="op-frame-detail1">
+				</div>
+				<div class="op-frame-detail2">
+				</div>
+			<div class="op-keyboard">
+					<div class="op-row">
+						<div class="op-comp op-comp-2x2">
+							<div class="op-speaker">
+								<div class="speaker-row-7"></div>
+								<div class="speaker-row-11"></div>
+								<div class="speaker-row-13"></div>
+								<div class="speaker-row-11"></div>
+								<div class="speaker-row-7"></div>
+							</div>
+						</div>
+						<div class="op-group-2">
+							<div class="op-comp op-comp-2x1">
+								<div class="op-knob-small">
+									<span class="knob-handle"></span>
+									<input class="knob-input" />
+								</div>
+							</div>
+							<a class="op-comp op-comp-btn" href=""></a>
+							<a class="op-comp op-comp-btn" href=""></a>
+						</div>
+						<div class="op-comp op-comp-4x2 op-comp-display"></div>
+						<div class="op-comp op-comp-2x2">
+							<div class="op-knob blue">
+								<span class="knob-handle"></span>
+								<input class="knob-input" />
+							</div>
+						</div>
+						<div class="op-comp op-comp-2x2">
+							<div class="op-knob green">
+								<span class="knob-handle"></span>
+								<input class="knob-input" />
+							</div>
+						</div>
+						<div class="op-comp op-comp-2x2">
+							<div class="op-knob white">
+								<span class="knob-handle"></span>
+								<input class="knob-input" />
+							</div>
+						</div>
+						<div class="op-comp op-comp-2x2">
+							<div class="op-knob orange">
+								<span class="knob-handle"></span>
+								<input class="knob-input" />
+							</div>
+						</div>
+						<div class="op-group-1">
+							<a class="op-comp op-comp-btn" href=""></a>
+							<a class="op-comp op-comp-btn" href=""></a>
+						</div>
+					</div>
+					<div class="op-row">
+						<a class="op-comp op-comp-btn" href=""></a>
+						<a class="op-comp op-comp-btn" href=""></a>
+						<a class="op-comp op-comp-btn" href=""></a>
+						<a class="op-comp op-comp-btn" href=""></a>
+						<a class="op-comp op-comp-btn" href=""></a>
+						<a class="op-comp op-comp-btn" href=""></a>
+						<a class="op-comp op-comp-btn" href=""></a>
+						<a class="op-comp op-comp-btn" href=""></a>
+						<a class="op-comp op-comp-btn" href=""></a>
+						<a class="op-comp op-comp-btn" href=""></a>
+						<a class="op-comp op-comp-btn" href=""></a>
+						<a class="op-comp op-comp-btn" href=""></a>
+						<a class="op-comp op-comp-btn" href=""></a>
+						<a class="op-comp op-comp-btn" href=""></a>
+						<a class="op-comp op-comp-btn" href=""></a>
+						<a class="op-comp op-comp-btn" href=""></a>
+						<a class="op-comp op-comp-btn" href=""></a>
+					</div>
+					<div class="op-row">
+						<a class="op-comp op-comp-btn" href=""></a>
+						<a class="op-comp op-comp-btn" href=""></a>
+						<a class="op-comp op-comp-btn" href=""></a>
+						<a class="op-comp op-comp-btn btn-wide-right btn-black" href=""></a>
+						<a class="op-comp op-comp-btn btn-black" href=""></a>
+						<a class="op-comp op-comp-btn btn-wide-left btn-black" href=""></a>
+						<a class="op-comp op-comp-btn btn-wide-right btn-black" href=""></a>
+						<a class="op-comp op-comp-btn btn-wide-left btn-black" href=""></a>
+						<a class="op-comp op-comp-btn btn-wide-right btn-black" href=""></a>
+						<a class="op-comp op-comp-btn btn-black" href=""></a>
+						<a class="op-comp op-comp-btn btn-wide-left btn-black" href=""></a>
+						<a class="op-comp op-comp-btn btn-wide-right btn-black" href=""></a>
+						<a class="op-comp op-comp-btn btn-wide-left btn-black" href=""></a>
+					</div>
+					<div class="op-row">
+						<div class="op-group-3">
+							<a class="op-comp op-comp-btn" href=""></a>
+							<a class="op-comp op-comp-btn" href=""></a>
+							<a class="op-comp op-comp-btn" href=""></a>
+							<a class="op-comp op-comp-btn" href=""></a>
+							<a class="op-comp op-comp-btn" href=""></a>
+							<a class="op-comp op-comp-btn" href=""></a>
+						</div>
+						<a class="op-comp op-comp-btn btn-1x2" href=""></a>
+						<a class="op-comp op-comp-btn btn-1x2" href=""></a>
+						<a class="op-comp op-comp-btn btn-1x2" href=""></a>
+						<a class="op-comp op-comp-btn btn-1x2" href=""></a>
+						<a class="op-comp op-comp-btn btn-1x2" href=""></a>
+						<a class="op-comp op-comp-btn btn-1x2" href=""></a>
+						<a class="op-comp op-comp-btn btn-1x2" href=""></a>
+						<a class="op-comp op-comp-btn btn-1x2" href=""></a>
+						<a class="op-comp op-comp-btn btn-1x2" href=""></a>
+						<a class="op-comp op-comp-btn btn-1x2" href=""></a>
+						<a class="op-comp op-comp-btn btn-1x2" href=""></a>
+						<a class="op-comp op-comp-btn btn-1x2" href=""></a>
+						<a class="op-comp op-comp-btn btn-1x2" href=""></a>
+						<a class="op-comp op-comp-btn btn-1x2" href=""></a>
+					</div>
+			</div>
+		</div>
+		</section>
+		<section class="extra">
+			<a class="op-btn-big" href=""><i class="icon">
+				<span></span><span></span><span></span><span></span>
+			</i></a>
+		</section>
+		<footer>
+			<span>A CSS experiment by <a href="http://samn.se">SamN</a>, with a little inspiration from <a href="http://www.teenageengineering.com/products/op-1">teenageengineering</a>.<br>Pure CSS3, no images, just lot's of gradients and shadows.</span>
+		</footer>
+	</div>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+		<script>
+
+			(function($){
+
+				$.knob = function(selector, options) {
+					var $body, $el, $input, angModel, angScope, data, maxValue, minValue, mm, startX;
+					options = jQuery.extend({}, {}, options);
+					$body = jQuery("body");
+
+					mm = function(event) {
+						var deg, mx, n, value;
+						mx = event.pageX - startX;
+						if(mx > 100) {
+							mx = 100;
+						}
+						if(mx < -100) {
+							mx = -100;
+						}
+						data.offsetX = mx;
+						n = (mx + 100) / 200.;
+						value = parseInt(minValue + (maxValue - minValue) * n);
+
+						$input.attr('value', value);
+						deg = Math.round(n * 340 - 170);
+						return $el.find(".knob-handle").css("transform", "rotate(" + deg + "deg)");
+					};
+					return $body.on("mousedown", selector, function(event) {
+						$el = jQuery(this);
+						$input = $el.find("input");
+						$el.addClass('active');
+
+						minValue = parseInt($input.attr("min"));
+						maxValue = parseInt($input.attr("max"));
+						data = jQuery.data(this, "knob") || {
+							offsetX: 0
+						};
+						startX = event.pageX - data.offsetX;
+						$body.on("mousemove", mm);
+						$body.one("mouseup mouseleave", function() {
+							$body.off("mousemove", mm);
+							$el.removeClass('active');
+							return jQuery.data($el[0], "knob", {
+								offsetX: data.offsetX
+							});
+						});
+						event.preventDefault();
+						return false;
+					});
+				};
+
+
+
+			})(window.jQuery);
+
+			jQuery(function(){
+				$('a.op-comp').click(function(){
+					return false;
+				});
+
+				$.knob('.op-knob-small, .op-knob');
+				$('.content').removeClass('hidden');
+			});
+
+		</script>
+		<script type="text/javascript">
+
+			  var _gaq = _gaq || [];
+			  _gaq.push(['_setAccount', 'UA-3713934-1']);
+			  _gaq.push(['_trackPageview']);
+
+			  (function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			  })();
+
+		</script>
+	</body>
+</html>
